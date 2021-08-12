@@ -6,10 +6,6 @@ import router from './router'
 import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.min.css'
 import 'vue-material/dist/theme/default.css'
-import VueApexCharts from 'vue-apexcharts'
-Vue.use(VueApexCharts)
-
-Vue.component('apexchart', VueApexCharts)
 
 Vue.use(VueMaterial)
 

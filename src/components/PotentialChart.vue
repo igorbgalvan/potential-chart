@@ -10,12 +10,6 @@
       <md-card-content>
         <!-- add graphic here -->
         <div id="chart">
-          <apexchart
-            type="heatmap"
-            height="350"
-            :options="chartOptions"
-            :series="series"
-          ></apexchart>
         </div>
       </md-card-content>
     </md-card>

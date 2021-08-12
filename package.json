@@ -10,9 +10,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "apexcharts": "^3.27.3",
     "vue": "^2.5.2",
-    "vue-apexcharts": "^1.6.2",
     "vue-material": "^1.0.0-beta-15",
     "vue-router": "^3.0.1"
   },
