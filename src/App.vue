@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div class="flex flex-col-1 justify-center" id="app">
     <router-view/>
   </div>
 </template>
@@ -13,5 +13,6 @@ export default {
 <style>
 #app {
   margin-top: 60px;
+
 }
 </style>
