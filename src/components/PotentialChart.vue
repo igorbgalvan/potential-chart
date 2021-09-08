@@ -18,7 +18,7 @@
           <div class="overflow-auto md:overflow-visible md:m-6">
             <div class="flex flex-row">
               <div class="m-2 flex flex-row justify-center items-center">
-                <div class="flex-shrink text-gray-500 transform -rotate-90">
+                <div class="flex-shrink w-6 text-gray-500 transform -rotate-90">
                   People/Culture
                 </div>
                 <div class="overflow-auto">
@@ -31,24 +31,69 @@
                       class="bg-yellow-300 rounded-tl-lg"
                       style="width: 96px; height: 96px"
                     ></div>
-                    <div class="h-24 w-24 bg-blue-300"></div>
-                    <div class="h-24 w-24 bg-green-300"></div>
-                    <div class="h-24 w-24 bg-green-300 rounded-tr-lg"></div>
+                    <div
+                      class="bg-blue-300"
+                      style="width: 96px; height: 96px"
+                    ></div>
+                    <div
+                      class="bg-green-300"
+                      style="width: 96px; height: 96px"
+                    ></div>
+                    <div
+                      class="bg-green-300 rounded-tr-lg"
+                      style="width: 96px; height: 96px"
+                    ></div>
 
-                    <div class="h-24 w-24 bg-yellow-300"></div>
-                    <div class="h-24 w-24 bg-yellow-300"></div>
-                    <div class="h-24 w-24 bg-blue-300"></div>
-                    <div class="h-24 w-24 bg-green-300"></div>
+                    <div
+                      class="bg-yellow-300"
+                      style="width: 96px; height: 96px"
+                    ></div>
+                    <div
+                      class="bg-yellow-300"
+                      style="width: 96px; height: 96px"
+                    ></div>
+                    <div
+                      class="bg-blue-300"
+                      style="width: 96px; height: 96px"
+                    ></div>
+                    <div
+                      class="bg-green-300"
+                      style="width: 96px; height: 96px"
+                    ></div>
 
-                    <div class="h-24 w-24 bg-red-300"></div>
-                    <div class="h-24 w-24 bg-yellow-300"></div>
-                    <div class="h-24 w-24 bg-yellow-300"></div>
-                    <div class="h-24 w-24 bg-blue-300"></div>
+                    <div
+                      class="bg-red-300"
+                      style="width: 96px; height: 96px"
+                    ></div>
+                    <div
+                      class="bg-yellow-300"
+                      style="width: 96px; height: 96px"
+                    ></div>
+                    <div
+                      class="bg-yellow-300"
+                      style="width: 96px; height: 96px"
+                    ></div>
+                    <div
+                      class="bg-blue-300"
+                      style="width: 96px; height: 96px"
+                    ></div>
 
-                    <div class="h-24 w-24 bg-red-300 rounded-bl-lg"></div>
-                    <div class="h-24 w-24 bg-red-300"></div>
-                    <div class="h-24 w-24 bg-yellow-300"></div>
-                    <div class="h-24 w-24 bg-yellow-300 rounded-br-lg"></div>
+                    <div
+                      class="bg-red-300 rounded-bl-lg"
+                      style="width: 96px; height: 96px"
+                    ></div>
+                    <div
+                      class="bg-red-300"
+                      style="width: 96px; height: 96px"
+                    ></div>
+                    <div
+                      class="bg-yellow-300"
+                      style="width: 96px; height: 96px"
+                    ></div>
+                    <div
+                      class="bg-yellow-300 rounded-br-lg"
+                      style="width: 96px; height: 96px"
+                    ></div>
                   </div>
                 </div>
               </div>
@@ -81,6 +126,13 @@
 </template>
 
 <style>
+img {
+}
+.element {
+  background-image: url(../assets/pointer.svg);
+  background-size: 100%;
+  border: none !important;
+}
 </style>
 
 <script>
@@ -97,7 +149,7 @@ export default {
               name: "Daniel",
               hard: 2.1,
               soft: 2,
-              picture: "https://i.pravatar.cc/150?u=igorbraga",
+              picture: "https://i.pravatar.cc/150?img=igorbraga",
             },
             {
               name: "igor",
@@ -122,21 +174,19 @@ export default {
   },
   mounted() {
     this.data.forEach((element) => {
-      const el = document.createElement(`div`);
+      const el = document.createElement(`img`);
       if (element.entries.length > 1) {
-        el.setAttribute("class", "absolute bg-red-900 z-10");
+        el.setAttribute(
+          "class",
+          "absolute border border-0 element rounded-full"
+        );
+        el.setAttribute("src", this.data[0].entries[0].picture);
         el.setAttribute(
           "style",
-          ` width: 32px; height: 32px; top: ${element.y}px; right: ${element.x}px;`
+          ` width: 48px; height: 48px; bottom: ${element.y}px; left: ${element.x}px;`
         );
         this.$refs.grid.appendChild(el);
       } else {
-        el.setAttribute("class", "absolute bg-red-900 z-10");
-        el.setAttribute(
-          "style",
-          ` width: 32px; height: 32px; top: ${element.y}px; right: ${element.x}px;`
-        );
-        this.$refs.grid.appendChild(el);
       }
     });
   },
