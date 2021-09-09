@@ -129,9 +129,17 @@
 img {
 }
 .element {
-  background-image: url(../assets/pointer.svg);
-  background-size: 100%;
+  background: url(../assets/vector.svg);
+  background-size: 120%;
   border: none !important;
+}
+
+.pointer-avatar{
+width: 48px; height: 68px;
+}
+
+.pointer-picture{
+  width: 32px; height: 32px; top:16px; left: 8px;
 }
 </style>
 
@@ -155,38 +163,54 @@ export default {
               name: "igor",
               soft: 2.1,
               hard: 2,
-              img: "https://i.pravatar.cc/300",
+              picture: "https://i.pravatar.cc/300",
             },
           ],
         },
         {
-          x: 220,
-          y: 220,
-          entries: [],
+          x: 270,
+          y: 270,
+          entries: [
+            {
+              name: "igor",
+              soft: 2.1,
+              hard: 2,
+              picture: "https://i.pravatar.cc/150?img=igor",
+            },
+          ],
         },
         {
           x: 100,
           y: 100,
-          entries: [],
+          entries: [
+            {
+              name: "igor",
+              soft: 2.1,
+              hard: 2,
+              picture: "https://i.pravatar.cc/150?img=igorbrga",
+            },
+          ],
         },
       ],
     };
   },
   mounted() {
+    //${this.data[0].entries[0].picture}
     this.data.forEach((element) => {
-      const el = document.createElement(`img`);
       if (element.entries.length > 1) {
-        el.setAttribute(
-          "class",
-          "absolute border border-0 element rounded-full"
+        this.$refs.grid.insertAdjacentHTML(
+          "beforeend",
+          `<div class="absolute pointer-avatar border border-0 element z-10" style="top: ${element.y}px; right: ${element.x}px">
+          <img src="${element.entries[0].picture}" class="absolute pointer-picture rounded-full">
+          </div>`
         );
-        el.setAttribute("src", this.data[0].entries[0].picture);
-        el.setAttribute(
-          "style",
-          ` width: 48px; height: 48px; bottom: ${element.y}px; left: ${element.x}px;`
-        );
-        this.$refs.grid.appendChild(el);
       } else {
+        this.$refs.grid.insertAdjacentHTML(
+          "beforeend",
+          `<div class="absolute border border-0 pointer-avatar element" style="top: ${element.y}px; right: ${element.x}px">
+          <img src="${element.entries[0].picture}" class="absolute pointer-picture rounded-full">
+          </div>`
+        );
       }
     });
   },
