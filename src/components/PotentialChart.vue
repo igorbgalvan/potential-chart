@@ -21,12 +21,13 @@
                 <div class="flex-shrink w-6 text-gray-500 transform -rotate-90">
                   People/Culture
                 </div>
-                <div class="overflow-auto">
+                <div class="overflow-auto relative">
                   <div
-                    class="grid grid-cols-4 relative"
+                    class="grid grid-cols-4"
                     style="width: 400px; height: 400px"
                     ref="grid"
                   >
+
                     <div
                       class="bg-yellow-300 rounded-tl-lg"
                       style="width: 96px; height: 96px"
@@ -94,7 +95,10 @@
                       class="bg-yellow-300 rounded-br-lg"
                       style="width: 96px; height: 96px"
                     ></div>
+
+
                   </div>
+                  <potential-chart-entry v-for="(entry, i) in data" :key="i" :entry="entry"></potential-chart-entry>
                 </div>
               </div>
             </div>
@@ -144,8 +148,12 @@ width: 48px; height: 68px;
 </style>
 
 <script>
+import PotentialChartEntry from './PotentialChartEntry.vue';
 export default {
-  name: "Potential Chart",
+  components: {
+    PotentialChartEntry,
+  },
+  name: "PotentialChart",
   data() {
     return {
       data: [
@@ -168,8 +176,8 @@ export default {
           ],
         },
         {
-          x: 270,
-          y: 270,
+          x: 240,
+          y: 250,
           entries: [
             {
               name: "igor",
@@ -195,24 +203,7 @@ export default {
     };
   },
   mounted() {
-    //${this.data[0].entries[0].picture}
-    this.data.forEach((element) => {
-      if (element.entries.length > 1) {
-        this.$refs.grid.insertAdjacentHTML(
-          "beforeend",
-          `<div class="absolute pointer-avatar border border-0 element z-10" style="top: ${element.y}px; right: ${element.x}px">
-          <img src="${element.entries[0].picture}" class="absolute pointer-picture rounded-full">
-          </div>`
-        );
-      } else {
-        this.$refs.grid.insertAdjacentHTML(
-          "beforeend",
-          `<div class="absolute border border-0 pointer-avatar element" style="top: ${element.y}px; right: ${element.x}px">
-          <img src="${element.entries[0].picture}" class="absolute pointer-picture rounded-full">
-          </div>`
-        );
-      }
-    });
+
   },
 };
 </script>
